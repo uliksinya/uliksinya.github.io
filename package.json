@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "source": "index.html",
   "description": "",
-  "main": "script.js",
   "scripts": {
     "start": "parcel",
     "build": "parcel build",
