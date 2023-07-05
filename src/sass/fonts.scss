@@ -1,0 +1,101 @@
+$white:rgb(255,255,255);
+$blue:rgba(14, 97, 151, 1);
+
+@font-face {
+    font-family: "Open Sans";
+    src: url(/utils/fonts/OpenSans-SemiBold.ttf);
+}
+@font-face {
+    font-family: "PTSerif";
+    src: url(/utils/fonts/PTSerif-Bold.ttf);
+}
+
+.container-left-datetime h2{
+    font-family: "Open Sans";
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 35px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: $blue;
+}
+
+.languages h2{
+    font-family: "PTSerif";
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 27px;
+    letter-spacing: 0.02em;
+    text-align: center;
+}
+.for-bad-vision h2{
+    font-family: "Open Sans";
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: $blue;
+}
+.company-additional-text h1{
+    font-family: "PTSerif";
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: 0em;
+    text-align: center;
+    text-transform: uppercase;
+    color: $blue;
+}
+.menu-item h1{
+    font-family: "PTSerif";
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 34px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: $blue;    
+}
+.company-name h1{
+    font-family: "Open Sans";
+    font-size: 50px;
+    font-weight: 800;
+    line-height: 35px;
+    text-align: center;
+    color: $white;
+    font-stretch: extra-condensed;
+}
+.company-add-text h4{
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 25px;
+    letter-spacing: 0em;
+}
+.page-links h4{
+    font-family: "Open Sans";
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 25px;
+    letter-spacing: 0em;
+    color: $white;
+}
+.buttons-grid h3{
+    font-family: "PTSerif";
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 27px;
+    letter-spacing: 0em;
+    text-align: center;
+    text-transform: uppercase;
+    color: $white;    
+}
+.developed-company h3{
+    font-family: "Montserrat";
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 17px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    width: 1000px; 
+}
