@@ -117,7 +117,8 @@ $blue:rgba(14, 97, 151, 1);
 .left-menu{
     margin-top: 66px;
     height: 375px;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     .menu-item{
         box-sizing: content-box;
         width: 440px;
@@ -126,6 +127,9 @@ $blue:rgba(14, 97, 151, 1);
         flex-direction: column;
         border-bottom: 2px solid $blue;
     }
+}
+::-webkit-scrollbar {
+    width: 0px;
 }
 #menu-item-active{
     background-color: $blue;
