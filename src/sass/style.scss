@@ -53,22 +53,33 @@ $blue:rgba(14, 97, 151, 1);
 #right{
     margin-left: 72px;
 }
-#active{
+#center{
     position: absolute;
-    z-index: 1;
-    left: calc(50% - 50px);
-    background: $blue;
+    left: calc(50% - 50px);  
+}
+// #left h2, 
+// #right h2,
+// #center h2{
+//     color: $blue;
+// }
+.button-leng.active {
+    background-color: rgba(14, 97, 151, 1);
     z-index: 2;
-    box-shadow:none;
+    box-shadow: none;
 }
-#left h2, 
-#right h2{
-    color: $blue;
-
-}
-#active h2{
+.button-leng.active h2{
     color: $white;
 }
+.button-leng h2{
+    color: $blue;
+}
+// #active h2{
+//     color: $white;
+// }
+// #active{
+//   background: $blue;
+//   z-index: 2;
+// }
 .for-bad-vision{
     @include flex-row;
     align-items: center;
@@ -105,6 +116,8 @@ $blue:rgba(14, 97, 151, 1);
 }
 .left-menu{
     margin-top: 66px;
+    height: 375px;
+    overflow: auto;
     .menu-item{
         box-sizing: content-box;
         width: 440px;
@@ -249,7 +262,12 @@ ul {
     margin-top: 25px;
     box-shadow: 4px 10px 16px 0px rgba(126, 42, 42, 0.25);
 }
-
+@media (max-width: 1920) {
+    body {
+        max-width: 1920px;
+        margin: 0 auto; /* Центрирование контента */
+      }
+}
 
   
 
