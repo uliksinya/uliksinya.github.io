@@ -2,13 +2,14 @@
 
 $white:rgb(255,255,255);
 $blue:rgba(14, 97, 151, 1);
-* {
+body, html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 .container{
     @include flex-row;
+    width:1920px;
 }
 //left part
 .continer-left-background{
@@ -85,6 +86,7 @@ $blue:rgba(14, 97, 151, 1);
     align-items: center;
     padding-left: 101px;    
     margin-top: 39px;
+    height: 54px;
 }
 #icon-eye{
     @include flex-center;
@@ -98,14 +100,14 @@ $blue:rgba(14, 97, 151, 1);
 .company-info{
     @include flex-center;
     flex-direction: column;
-    margin-top: 81px;
+    margin-top: 86px;
     .company-logo{
         width: 247px;
         height: 105px;
         background-image: url("/utils/image/logo_gomel.png");
     }
     .company-text{
-        margin-top: 3px;
+        margin-top: 8px;
         width: 246px;
         height: 25px;
         background-image: url("/utils/image/gomelenergo_text.png");
@@ -218,9 +220,14 @@ ul {
         }    
     }
 }
-
+.buttons-grid{
+    position: relative;
+}
 .buttons-grid::-webkit-scrollbar {
     display: none; /* скрытие полосы прокрутки в WebKit-браузерах */
+    position: absolute;
+    top:0;
+    left: 100px;
 }
 .buttons-grid button{
     width: 290px;
@@ -266,13 +273,18 @@ ul {
     margin-top: 25px;
     box-shadow: 4px 10px 16px 0px rgba(126, 42, 42, 0.25);
 }
-@media (max-width: 1920) {
-    body {
-        max-width: 1920px;
-        margin: 0 auto; /* Центрирование контента */
-      }
+#icon:hover{
+    box-shadow: 9px 4px 11px 0px rgba(0, 0, 0, 0.25);   
 }
-
+#exit{
+    position: relative;
+}
+#exit::after{
+    content:url(../../utils/image/arrow4.png);
+    position: absolute;
+    top:5px;
+    left:150px;
+}
   
 
   

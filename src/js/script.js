@@ -5,8 +5,7 @@ const sliderImages = document.querySelectorAll('.slider img');
 let currentImageIndex = 0;
 
 // Функция для отображения следующего изображения слайдера
-function showNextImage() {
-  
+function showNextImage() {  
   sliderImages[currentImageIndex].classList.remove('active'); 
   currentImageIndex = (currentImageIndex + 1) % sliderImages.length;  
   sliderImages[currentImageIndex].classList.add('active');
@@ -15,11 +14,13 @@ sliderImages[currentImageIndex].classList.add('active');
 setInterval(showNextImage, 4000);
 
 /*
-  Получение времени и даты
+  Получение времени,даты, погоды
 */
 const leftContainer = document.querySelector(".continer-left-background-overlay");
 const time = document.getElementById("time");
 const date = document.getElementById("date");
+const apiKey = "ae005c85b718a4083896519aaf225ee5"; // Ваш API ключ OpenWeatherMap
+const cityId = 625144; // ID города Минск
 const months = [
   "января",
   "февраля",
@@ -34,6 +35,7 @@ const months = [
   "ноября",
   "декабря"
 ];
+
 function generateDate(){
   const date = new Date();    
   const day = date.getDate(); 
@@ -43,6 +45,7 @@ function generateDate(){
   beautifulDate = `${day} ${month} ${year}`;
   return beautifulDate;
 }
+
 function generateTime() {
   const date = new Date();
   let hours = date.getHours().toString();
@@ -51,16 +54,85 @@ function generateTime() {
   return timeString;
 }
 
-function generateDateTime(){
+async function getWeatherData() {
+  const url = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=${apiKey}&units=metric`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await response.json();
+    return data;
+  } 
+  catch (error) {
+    console.error("Error fetching weather data:", error);
+    return null;
+  }
+}
+async function generateWeather() {
+  try {
+    const data = await getWeatherData();
+    if (data) {
+      console.log(data); // Здесь можно обработать полученные данные о погоде
+      const temperature = Math.round(data.main.temp);
+      console.log(temperature); // Выведет значение температуры (например, 26.86)
+      console.log(typeof(temperature));//number
+      return `${temperature.toString()}°C`;
+    } 
+  } catch (error) {
+    console.error("Ошибка при получении данных о погоде:", error);
+    return "Нет данных о погоде"; // Вернуть какое-то значение по умолчанию в случае ошибки
+  }
+}
+async function generateWeatherString(){
+  const weather = await generateWeather();   
+  console.log(typeof(weather));//string
+  console.log(weather);        //28°C
+  return weather;
+}
+async function generateDateTime() {
+  const data = await generateWeatherString();   
   return `<div class="container-left-datetime">
-            <div class="time" id ="time"><h2>${generateTime()}</h2></div>
-            <div class="date" id="date"><h2>${generateDate()}</h2></div>
-            <div class="weather" id="weather"><h2>16°C</h2></div>
-          </div>`
+    <div class="time" id="time"><h2>${generateTime()}</h2></div>
+    <div class="date" id="date"><h2>${generateDate()}</h2></div>
+    <div class="weather" id="weather"><h2>${data}</h2></div> 
+    </div>`;    
+}
+console.log(generateDateTime());
+
+function updateDateTime() {
+  const timeElement = document.getElementById("time");
+  const dateElement = document.getElementById("date");
+  if (timeElement && dateElement) {
+    timeElement.innerHTML = `<h2>${generateTime()}</h2>`;
+    dateElement.innerHTML = `<h2>${generateDate()}</h2>`;
+  }
+}
+
+async function updateWeather() {
+  generateWeatherString().then((weather) => {
+    const weatherElement = document.getElementById("weather");
+    if (weatherElement) {
+      weatherElement.innerHTML = `<h2>${weather}</h2>`;
+    }
+  });
 }
 
 if (leftContainer) {
-  leftContainer.insertAdjacentHTML('afterbegin', generateDateTime());
+  // Внутри асинхронной функции использовать await
+  async function getDateTime() {
+    try {
+      const dateTime = await generateDateTime();
+      leftContainer.insertAdjacentHTML('afterbegin', dateTime);
+    } catch (error) {
+      console.error('Произошла ошибка:', error);
+    }
+  }
+  getDateTime();
+  // Вызвать функцию updateDateTime() для обновления времени и даты каждую секунду
+  setInterval(updateDateTime, 1000);
+  setInterval(updateWeather, 600000);
+
 }
 
 /*
@@ -239,3 +311,6 @@ function createNewButton(text, id){
   button.innerHTML = `<h3>${text}</h3>`;
   buttonsContainer.appendChild(button);
 }
+const windowWidth = window.innerWidth;
+console.log(windowWidth);
+

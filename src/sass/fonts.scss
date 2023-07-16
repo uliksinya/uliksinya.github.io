@@ -18,7 +18,9 @@ $blue:rgba(14, 97, 151, 1);
     letter-spacing: 0em;
     text-align: center;
     color: $blue;
+    margin: 0px;
 }
+
 
 .languages h2{
     font-family: "PTSerif";
@@ -46,6 +48,7 @@ $blue:rgba(14, 97, 151, 1);
     text-align: center;
     text-transform: uppercase;
     color: $blue;
+    margin:0px;
 }
 .menu-item h1{
     font-family: "PTSerif";
@@ -79,6 +82,7 @@ $blue:rgba(14, 97, 151, 1);
     line-height: 25px;
     letter-spacing: 0em;
     color: $white;
+    font-style: italic;
 }
 .buttons-grid h3{
     font-family: "PTSerif";
@@ -99,3 +103,21 @@ $blue:rgba(14, 97, 151, 1);
     text-align: left;
     width: 1000px; 
 }
+#exit {
+    display: inline-flex; /* Размещаем ссылку и иконку в один ряд, используя Flexbox */
+    align-items: center; /* Выравниваем элементы по вертикали */
+    text-decoration: none; /* Убираем стандартное подчеркивание ссылки */
+    color: #ffffff; /* Задаем цвет текста (белый) */
+  }
+  
+  #exit h4 {
+    margin: 0; /* Убираем отступы для нормального выравнивания текста */
+    margin-right: 10px; /* Добавляем небольшой отступ между текстом и иконкой */
+  }
+  
+  #exit svg {
+    width: 1em; /* Устанавливаем ширину иконки */
+    height: 1em; /* Устанавливаем высоту иконки */
+    fill: white; /* Задаем цвет для иконки (белый) */
+  }
+  
